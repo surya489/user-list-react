@@ -6,9 +6,9 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 function App() {
   return (
     <>
-      <nav>
+      {/* <nav>
         <Link to="/users">Users</Link>
-      </nav>
+      </nav> */}
 
       <Routes>
         <Route path="/users" element={<Users />} />
