@@ -1,3 +1,7 @@
+#root {
+  height: 100vh;
+}
+
 .App {
   text-align: center;
 }
@@ -44,4 +48,16 @@
 
 .fs-16 {
   font-size: 16px;
+}
+
+.form-control {
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  box-shadow: none !important;
+}
+
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+  border-color: #dee2e6 !important;
 }
