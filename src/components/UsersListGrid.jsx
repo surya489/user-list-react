@@ -10,6 +10,16 @@ export const UsersListGrid = () => {
     const [users, setUsers] = useState([]);
     const [searchTerm, setSearchTerm] = useState("");
     const [isLoading, setisLoading] = useState(false);
+    const [debounceSearch, setDebounceSearch] = useState("");
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setDebounceSearch(searchTerm);
+        }, 500);
+
+        return () => clearTimeout(timer);
+
+    }, [searchTerm]);
 
     const fetchApiData = async () => {
         try {
@@ -32,7 +42,7 @@ export const UsersListGrid = () => {
     }, []);
 
     const filterusers = users.filter((user) =>
-        user.name.toLowerCase().includes(searchTerm.toLowerCase())
+        user.name.toLowerCase().includes(debounceSearch.toLowerCase())
     )
 
     return (
@@ -42,7 +52,6 @@ export const UsersListGrid = () => {
                 value={searchTerm}
                 onChange={(e) => {
                     setSearchTerm(e.target.value);
-                    fetchApiData();
                 }}
             />
             {isLoading ? (
